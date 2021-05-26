@@ -7,13 +7,23 @@ RSpec.describe Greengrocer do
           {name: "きゅうり", price: 200}
         ]
         greengrocer = Greengrocer.new(product_params)
-        expect { greengrocer.products.size }.to eq 2
+        expect(greengrocer.products.size).to eq 2
       end
       it "@productsの最初の要素の名前が、product_paramsの最初の要素の名前と等しいこと" do
-        
+        product_params = [
+          {name: "トマト", price: 100},
+          {name: "きゅうり", price: 200}
+        ]
+        greengrocer = Greengrocer.new(product_params)
+        expect(greengrocer.products[0].name).to eq "トマト"
       end
       it "@productsの最初の要素の金額が、product_paramsの最初の要素の金額と等しいこと" do
-        
+        product_params = [
+          {name: "トマト", price: 100},
+          {name: "きゅうり", price: 200}
+        ]
+        greengrocer = Greengrocer.new(product_params)
+        expect(greengrocer.products[0].price).to eq 100
       end
     end
   end
