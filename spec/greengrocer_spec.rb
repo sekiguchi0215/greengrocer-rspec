@@ -47,4 +47,20 @@ RSpec.describe Greengrocer do
       expect(greengrocer.products[-1].price).to eq 350
     end
   end
+
+  describe ".disp_products" do
+    it "期待する表示がされること" do
+      base_id = Product.class_variable_get("@@count")
+      hello_msg = "いらっしゃいませ！商品を選んで下さい。"
+      product_msg1 = "#{base_id + 1}.トマト(¥100)"
+      product_msg2 = "#{base_id + 2}.きゅうり(¥200)"
+      msg = "#{hello_msg}\n#{product_msg1}\n#{product_msg2}\n"
+      product_params = [
+        {name: "トマト", price: 100},
+        {name: "きゅうり", price: 200}
+      ]
+      greengrocer = Greengrocer.new(product_params)
+      expect{ greengrocer.disp_products }.to output(msg).to_stdout
+    end
+  end
 end
